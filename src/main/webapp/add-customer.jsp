@@ -330,8 +330,6 @@
         
         .password-container {
             position: relative;
-            display: flex;
-            align-items: center;
         }
         
         .password-toggle {
@@ -346,6 +344,7 @@
             padding: 0.5rem;
             border-radius: 5px;
             transition: all 0.3s ease;
+            z-index: 3;
         }
         
         .password-toggle:hover {
@@ -372,6 +371,7 @@
         .form-group input[type="email"],
         .form-group input[type="tel"] {
             padding-left: 3rem;
+            padding-right: 3.5rem;
         }
         
         .form-group input.error {
@@ -501,11 +501,14 @@
         }
         
         function validatePassword(password) {
+            if (!password || password.trim() === '') {
+                return "Mật khẩu không được để trống!";
+            }
             if (password.length < 8) {
                 return "Mật khẩu phải có ít nhất 8 ký tự!";
             }
-            if (!password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)) {
-                return "Mật khẩu phải chứa ít nhất 1 chữ hoa, 1 chữ thường, 1 số và 1 ký tự đặc biệt (@$!%*?&)!";
+            if (!password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9])/)) {
+                return "Mật khẩu phải chứa ít nhất 1 chữ hoa, 1 chữ thường, 1 số và 1 ký tự đặc biệt!";
             }
             return null;
         }

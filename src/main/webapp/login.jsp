@@ -217,7 +217,9 @@
             background: rgba(102, 126, 234, 0.1);
         }
         
-        .form-group input[type="password"] {
+        .form-group input[type="password"],
+        .form-group input[type="text"] {
+            padding-left: 45px;
             padding-right: 50px;
         }
         
@@ -229,14 +231,12 @@
             color: #718096;
             font-size: 1.1rem;
             pointer-events: none;
-        }
-        
-        .form-group input[type="text"]:not([name="account"]) {
-            padding-left: 45px;
+            z-index: 1;
         }
         
         .form-group input[name="account"] {
             padding-left: 45px;
+            padding-right: 1.2rem;
         }
         
         .btn-login {
@@ -435,10 +435,8 @@
             <div class="form-group">
                 <label for="password">🔐 Mật khẩu:</label>
                 <div class="password-container">
-                    <div style="position: relative;">
-                        <span class="input-icon">🛡️</span>
-                        <input type="password" id="password" name="password" required>
-                    </div>
+                    <span class="input-icon">🛡️</span>
+                    <input type="password" id="password" name="password" required>
                     <button type="button" class="password-toggle" onclick="togglePassword()">
                         <span id="password-eye">👁</span>
                     </button>

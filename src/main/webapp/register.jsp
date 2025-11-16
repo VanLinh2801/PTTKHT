@@ -202,14 +202,17 @@
             align-items: center;
             justify-content: center;
             transition: color 0.3s ease;
+            z-index: 3;
         }
         
         .password-toggle:hover {
             color: #2d3748;
         }
         
-        .form-group input[type="password"] {
-            padding-right: 40px;
+        .form-group input[type="password"],
+        .form-group input[type="text"] {
+            padding-left: 45px;
+            padding-right: 50px;
         }
         
         .input-icon {
@@ -223,7 +226,6 @@
             z-index: 2;
         }
         
-        .form-group input[type="text"],
         .form-group input[type="email"],
         .form-group input[type="tel"],
         .form-group input[type="date"] {
@@ -486,11 +488,15 @@
         }
 
         function validatePassword(password) {
+            if (!password || password.trim() === '') {
+                return 'Mật khẩu không được để trống!';
+            }
+            
             const minLength = 8;
             const hasUpperCase = /[A-Z]/.test(password);
             const hasLowerCase = /[a-z]/.test(password);
             const hasNumbers = /\d/.test(password);
-            const hasSpecialChar = /[@$!%*?&]/.test(password);
+            const hasSpecialChar = /[^a-zA-Z0-9]/.test(password);
             
             if (password.length < minLength) {
                 return 'Mật khẩu phải có ít nhất 8 ký tự!';
@@ -505,7 +511,7 @@
                 return 'Mật khẩu phải chứa ít nhất 1 số!';
             }
             if (!hasSpecialChar) {
-                return 'Mật khẩu phải chứa ít nhất 1 ký tự đặc biệt (@$!%*?&)!';
+                return 'Mật khẩu phải chứa ít nhất 1 ký tự đặc biệt!';
             }
             return '';
         }
