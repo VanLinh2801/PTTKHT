@@ -35,6 +35,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xác nhận thông tin - Garage Management</title>
     <style>
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;

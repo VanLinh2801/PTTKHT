@@ -25,6 +25,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tìm kiếm khách hàng - Garage Management</title>
     <style>
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -457,7 +458,6 @@
                 const rowCount = rows.length;
                 
                 if (rowCount > 0) {
-
                     const firstRow = rows[0];
                     const rowHeight = firstRow.offsetHeight;
 
@@ -471,19 +471,19 @@
                     const availableHeight = resultsSectionHeight - h3Height - marginInPixels;
 
                     const maxVisibleRows = Math.floor((availableHeight - headerHeight) / rowHeight);
-                    const displayRows = Math.min(maxVisibleRows, 5);
+                    const maxDisplayRows = 15;
+                    const displayRows = Math.min(maxVisibleRows, maxDisplayRows);
                     
-                    if (rowCount <= displayRows) {
-
-                        tableContainer.style.maxHeight = (headerHeight + rowCount * rowHeight) + 'px';
+                    if (rowCount <= maxVisibleRows) {
+                        const exactHeight = headerHeight + rowCount * rowHeight;
+                        tableContainer.style.maxHeight = exactHeight + 'px';
                         tableContainer.style.overflowY = 'hidden';
                     } else {
-
-                        tableContainer.style.maxHeight = (headerHeight + displayRows * rowHeight) + 'px';
+                        const exactHeight = headerHeight + displayRows * rowHeight;
+                        tableContainer.style.maxHeight = exactHeight + 'px';
                         tableContainer.style.overflowY = 'auto';
                     }
                 } else {
-
                     tableContainer.style.overflowY = 'hidden';
                 }
             }
