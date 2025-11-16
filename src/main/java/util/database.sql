@@ -73,7 +73,7 @@ CREATE TABLE payment_invoice (
     discount            FLOAT DEFAULT 0,
     sales_staff_id      INTEGER NOT NULL REFERENCES users(id),
     customer_id         INTEGER NOT NULL REFERENCES users(id),
-    vehicle_id          INTEGER NOT NULL REFERENCES car(id)
+    vehicle_id          INTEGER REFERENCES car(id)
 );
 
 CREATE TABLE payment_invoice_service (
