@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 
+                              http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+    <!-- Local repository -->
+    <localRepository>${user.home}/.m2/repository</localRepository>
+
+    <!-- Servers configuration for Tomcat -->
+    <servers>
+        <server>
+            <id>tomcat</id>
+            <username>admin</username>
+            <password>admin</password>
+        </server>
+    </servers>
+
+    <!-- Profiles -->
+    <profiles>
+        <profile>
+            <id>tomcat10</id>
+            <properties>
+                <tomcat.home>C:\Users\ADMIN\Downloads\apache-tomcat-10.1.48-windows-x64\apache-tomcat-10.1.48</tomcat.home>
+                <tomcat.manager.url>http://localhost:8080/manager/text</tomcat.manager.url>
+                <tomcat.manager.username>admin</tomcat.manager.username>
+                <tomcat.manager.password>admin</tomcat.manager.password>
+            </properties>
+        </profile>
+    </profiles>
+
+    <!-- Active profiles -->
+    <activeProfiles>
+        <activeProfile>tomcat10</activeProfile>
+    </activeProfiles>
+
+</settings>
